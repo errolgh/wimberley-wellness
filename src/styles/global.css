@@ -1,3 +1,178 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* we'll try "never margin-top on typography, only containers/wrappers" */
+/* on boilerplate code, gatsby replaces the <main/> tag on each page render */
+
+/* |||||||||||||||||||||| Hero Tint |||||||||||||||||||||| */
+.tint {
+  background-position: bottom;
+  filter: brightness(45%) opacity(95%);
+}
+
+/* |||||||||||||||||||||| Resets & BG Color |||||||||||||||||||||| */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  @apply antialiased;
+}
+body {
+  margin: 0;
+  padding: 0;
+  line-heigh: 1.6;
+  @apply bg-[#fcfcfc];
+}
+
+main {
+  @apply max-w-7xl mx-auto;
+}
+
+/* |||||||||||||||||||||| Typography Styles |||||||||||||||||||||| */
+
+h2 {
+  @apply text-3xl mb-5 font-serif font-semibold;
+}
+
+p {
+  @apply mb-5 text-slate-800 text-lg;
+}
+
+/* |||||||||||||||||||||| Hamburger Menu |||||||||||||||||||||| */
+
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  width: 24px;
+  height: 2.5px;
+  border-radius: 10px;
+  top: 2px;
+  left: 4px;
+  /* right:0; */
+  /* bottom: 0; */
+  background: #e2e8f0;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.open .hamburger-top,
+.open .hamburger-middle,
+.open .hamburger-bottom {
+  background: #000000;
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(8px);
+}
+
+.hamburger-bottom {
+  transform: translateY(16px);
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
+}
+
+.animate-right {
+  @media (max-width: 768px) {
+    transform: translateX(-100%);
+  }
+  transition: all 0.55s;
+}
+
+.animate-li > li {
+  @media (max-width: 768px) {
+    opacity: 0;
+    transform: translate(5px, 70px);
+  }
+}
+
+.animate-li > li:nth-child(1) {
+  transition: all 0.5s ease 0.2s;
+  transition-delay: 0.2s;
+  &:hover {
+    transition-delay: none;
+    transition: all 0.3s;
+  }
+}
+
+.animate-li > li:nth-child(2) {
+  transition: all 0.5s ease 0.3s;
+  transition-delay: 0.3s;
+  &:hover {
+    transition-delay: none;
+    transition: all 0.3s;
+  }
+}
+
+.animate-li > li:nth-child(3) {
+  transition: all 0.5s ease 0.4s;
+  transition-delay: 0.4s;
+  &:hover {
+    transition-delay: none;
+    transition: all 0.3s;
+  }
+}
+
+.animate-li > li:nth-child(4) {
+  transition: all 0.5s ease 0.5s;
+  transition-delay: 0.5s;
+  &:hover {
+    transition-delay: none;
+    transition: all 0.3s;
+  }
+}
+
+.animate-li > li:nth-child(5) {
+  transition: all 0.5s ease 0.6s;
+  transition-delay: 0.6s;
+  &:hover {
+    transition-delay: none;
+    transition: all 0.3s;
+  }
+}
+
+.animate-li > li:nth-child(6) {
+  transition: all 0.5s ease 0.7s;
+  transition-delay: 0.7s;
+  &:hover {
+    transition-delay: none;
+    transition: all 0.3s;
+  }
+}
+
+.fade > li {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.active {
+  @apply text-teal-600;
+}

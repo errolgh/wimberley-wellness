@@ -1,176 +1,100 @@
-import * as React from "react"
-
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+import * as React from 'react'
+import Layout from '../components/Layout'
+import ParallaxHero from '../components/ParallaxHero'
+import SplitTextImage from '../components/SplitTextImage'
+import * as data from '../data/index.js'
+import {GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const IndexPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+    <Layout>
+      <ParallaxHero />
+      <main>
+        <React.StrictMode>
+          <SplitTextImage data={data.theWork}>
+            {/* <GatsbyImage image={data.theWork.image} /> */}
+          </SplitTextImage>
+          <div className="mx-auto max-w-4xl my-10">
+            <h2>
+              Lorem ipsum dolor sit.
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
+              cupiditate. Nam quas a eos alias fugiat assumenda, illo
+              reprehenderit unde nesciunt veniam! Totam, debitis quas.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+              cupiditate animi sit soluta. Accusamus magni dicta eveniet
+              voluptas iure officia laboriosam velit iusto est consequuntur
+              quasi aperiam, quam ullam porro, qui, quas ex?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+              nemo doloribus delectus quidem modi laborum est vitae temporibus
+              unde neque officia ab suscipit, repellat sed iure consequuntur!
+              Eligendi totam sed consequatur, ab quibusdam, natus odit maiores
+              saepe nobis, placeat commodi quas voluptatibus labore molestiae
+              minima cumque ea perferendis veniam obcaecati modi. Quos rerum rem
+              necessitatibus animi velit recusandae tempora.
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
+              corrupti et numquam nam quo ratione obcaecati fugiat illum
+              quisquam cumque delectus officiis praesentium officia nobis, ab,
+              accusamus incidunt! Culpa dolorem saepe laudantium quis mollitia
+              repellendus debitis, porro assumenda velit fugit!
+            </p>
+          </div>
+        </React.StrictMode>
+      </main>
+    </Layout>
   )
 }
 
 export default IndexPage
 
 export const Head = () => <title>Home Page</title>
+
+/*
+
+General notes I have about the website:
+
+The purposes of the website:
+
+1. To appeal to a certain type of client. Generally educated but not stuffy, seeking a real connection with their therapist, understanding that it is a process we figure out together, not a place to get treated for a disease or something like that. Its a philosophical work. An art, not a science. I don’t want to say that explicitly, but some how convey that subtly, encouraging the kind of people who want that and seek to grow, dissuading the people who are not like that and define themselves by disorder for years on end. (Sound too mean? I hope you feel my vague meaning here because I know I am not saying it well.)
+
+2. To attract junior therapists, LMSWs, to work with me as W2 employees, highlighting the strengths of the employment offer, as well as the positive vibe of the place itself.
+
+3. To sell the association concept to independent therapists who are sick of working for other people and want autonomy, but who also don’t want to go at the business of solo therapy practice alone.
+
+
+
+*/
+
+/*
+
+Wasn't specified as 'home page' by the client, but sounds home page-ish:
+
+Part of how I want to do that with the website: 
+
+Communicate my vision about the value of therapy, what it will mean to clients in a compelling way that moves prospective employees to want to work for me. 
+	-Something different from the typical stuff on such websites.
+	-None of the smoothed over fluffy, not-saying-anything BS that is the usual fare.
+
+To show off the place as a home-like environment (but not actually a home), to show that it is 	NOT A CLINIC, and that there is nothing clinical about it. To show that it is a refined experience to do therapy here, but that it is warm, comfortable. A place where clients will feel proud that they go to, proud that they have refined personable therapy.
+
+*/
+
+/*
+THE HOME PAGE
+
+Whatever the top picture/design is, it needs to be something more authentic, maybe from the office pictures in some way, or something quite plain. Not sure, but I am not a fan of the present white with the leaves.
+
+The headline message needs to be something bold… something that snaps the attention, not the usual BS fluff on these kind of websites. Something that conveys how it will be different here. (I need to meditate on that….) Something about how this is not about educating or indoctrinating an ideology, but something an authentic human to human relationship, with tuning in and drawing out the client’s own wisdom about their own life is the chief value…. I need to think about that some more. Something that will counter the common fear of judgment that keeps some people away from therapists…
+
+Something, maybe temporary, that highlights the company is hiring and brings the user to the career page?
+
+Something pertaining to the association…?
+
+*/
